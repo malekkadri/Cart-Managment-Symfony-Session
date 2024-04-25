@@ -1,0 +1,45 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Abonnement index{% endblock %}
+
+{% block body %}
+<div class="container-fluid contact bg-light py-5">
+ <div class="container py-5">
+    <h1>Abonnement index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Duree_abonnement</th>
+                <th>Prix_abonnement</th>
+                <th>Date_deb_abonnement</th>
+                <th>Date_fin_abonnement</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for abonnement in abonnements %}
+            <tr>
+                <td>{{ abonnement.id }}</td>
+                <td>{{ abonnement.dureeAbonnement }}</td>
+                <td>{{ abonnement.prixAbonnement }}</td>
+                <td>{{ abonnement.dateDebAbonnement ? abonnement.dateDebAbonnement|date('Y-m-d') : '' }}</td>
+                <td>{{ abonnement.dateFinAbonnement ? abonnement.dateFinAbonnement|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_abonnement_show', {'id': abonnement.id}) }}" class="primary-btn price-btn">show</a>
+                    <a href="{{ path('app_abonnement_edit', {'id': abonnement.id}) }}" class="primary-btn price-btn">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_abonnement_new') }}">Create new</a>
+    </div>
+    </div>
+{% endblock %}

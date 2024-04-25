@@ -1,0 +1,17 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Edit Abonnement{% endblock %}
+
+{% block body %}
+<div class="container-fluid contact bg-light py-5">
+ <div class="container py-5">
+    <h1>Edit Abonnement</h1>
+
+    {{ include('abonnement/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_abonnement_index') }}" class="btn btn-secondary">back to list</a>
+
+    {{ include('abonnement/_delete_form.html.twig') }}
+    </div>
+    </div>
+{% endblock %}

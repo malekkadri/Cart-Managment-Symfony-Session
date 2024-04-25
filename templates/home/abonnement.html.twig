@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <h1 class="mt-3 mb-4">Abonnements for {{ salle.nom_salle }}</h1>
+    <div class="row">
+        {% if abonnements|length > 0 %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Duration</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Start Date</th>
+                        <th scope="col">End Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for abonnement in abonnements %}
+                        <tr>
+                            <td>{{ abonnement.duree_abonnement }}</td>
+                            <td>{{ abonnement.prix_abonnement }}</td>
+                            <td>{{ abonnement.date_deb_abonnement|date("Y-m-d") }}</td>
+                            <td>{{ abonnement.date_fin_abonnement|date("Y-m-d") }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No subscriptions available.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

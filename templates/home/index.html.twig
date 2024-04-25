@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="mt-3 mb-4">Salles</h1>
+        <div class="row">
+            {% for salle in salles %}
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="{{ asset('uploads/' ~ salle.image) }}" alt="{{ salle.nom_salle }}" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ salle.nom_salle }}</h5>
+                            <p class="card-text">{{ salle.description_salle }}</p>
+                            <div class="d-flex justify-content-between align-item-center">
+                         <a href="{{ path('salle_abonnements', {'id': salle.id}) }}" class="btn btn-primary">Subscribe</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Abonnement{% endblock %}
+
+{% block body %}
+<div class="container-fluid contact bg-light py-5">
+ <div class="container py-5">
+    <h1>Abonnement</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ abonnement.id }}</td>
+            </tr>
+            <tr>
+                <th>Duree_abonnement</th>
+                <td>{{ abonnement.dureeAbonnement }}</td>
+            </tr>
+            <tr>
+                <th>Prix_abonnement</th>
+                <td>{{ abonnement.prixAbonnement }}</td>
+            </tr>
+            <tr>
+                <th>Date_deb_abonnement</th>
+                <td>{{ abonnement.dateDebAbonnement ? abonnement.dateDebAbonnement|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Date_fin_abonnement</th>
+                <td>{{ abonnement.dateFinAbonnement ? abonnement.dateFinAbonnement|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_abonnement_index') }}" class="btn btn-secondary">back to list</a>
+
+    <a href="{{ path('app_abonnement_edit', {'id': abonnement.id}) }}" class="primary-btn price-btn">edit</a>
+
+    {{ include('abonnement/_delete_form.html.twig') }}
+    </div>
+    </div>
+{% endblock %}

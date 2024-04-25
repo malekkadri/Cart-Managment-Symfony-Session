@@ -1,0 +1,53 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Salle index{% endblock %}
+
+{% block body %}
+<div class="container-fluid contact bg-light py-5">
+ <div class="container py-5">
+    <h1>Salle index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom_salle</th>
+                <th>Description_salle</th>
+                <th>Region_salle</th>
+                <th>Image</th>
+                <th>Adresse_salle</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for salle in salles %}
+            <tr>
+                <td>{{ salle.id }}</td>
+                <td>{{ salle.nom_salle }}</td>
+                <td>{{ salle.description_salle }}</td>
+                <td>{{ salle.region_salle }}</td>
+                 <td>
+                    {% if salle.image %}
+                        <img src="{{ asset('uploads/' ~ salle.image) }}" alt="Classe image" width="100" />
+                    {% else %}
+                        No image available
+                    {% endif %}
+                </td>
+                <td>{{ salle.adresse_salle }}</td>
+                <td>
+                    <a href="{{ path('app_salle_show', {'id': salle.id}) }}" class="primary-btn price-btn">show</a>
+                    <a href="{{ path('app_salle_edit', {'id': salle.id}) }}" class="primary-btn price-btn">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_salle_new') }}">Create new</a>
+    </div>
+    </div>
+{% endblock %}

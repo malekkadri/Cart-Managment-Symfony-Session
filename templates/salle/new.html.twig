@@ -1,0 +1,15 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}New Salle{% endblock %}
+
+{% block body %}
+<div class="container-fluid contact bg-light py-5">
+ <div class="container py-5">
+    <h1>Create new Salle</h1>
+
+    {{ include('salle/_form.html.twig') }}
+
+    <a href="{{ path('app_salle_index') }}" class="btn btn-secondary">back to list</a>
+    </div>
+ </div>
+{% endblock %}
